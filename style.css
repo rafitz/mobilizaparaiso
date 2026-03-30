@@ -1,0 +1,171 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:sans-serif;
+}
+
+body{
+  background:#0d1117;
+  color:#fff;
+}
+
+.screen{
+  max-width:350px;
+  margin:40px auto;
+  border-radius:20px;
+  overflow:hidden;
+  background:#0d1117;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  opacity:0;
+  transform:translateX(100%);
+  transition:0.5s;
+}
+
+.active{
+  opacity:1;
+  transform:translateX(0);
+  position:relative;
+}
+
+.start{
+  height:600px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.bus-icon{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.enter{
+  margin-top:20px;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  border:none;
+  background:#22c55e;
+  font-size:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+  100%{transform:scale(1)}
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+}
+
+.status{
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:10px;
+}
+
+.online{
+  background:#22c55e;
+  color:#000;
+}
+
+.bus-status{
+  background:#22c55e;
+  color:#000;
+  text-align:center;
+  padding:8px;
+  margin:0 15px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+#map{
+  margin:15px;
+  height:180px;
+  border-radius:15px;
+}
+
+.info-cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:15px;
+}
+
+.card{
+  background:#161b22;
+  padding:10px;
+  border-radius:10px;
+}
+
+.card p{
+  font-size:10px;
+  color:#aaa;
+}
+
+.green{
+  color:#22c55e;
+}
+
+.list{
+  margin:15px;
+}
+
+.toggle-btn{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:#22c55e;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.toggle-btn:hover{
+  transform:scale(1.03);
+}
+
+.list ul{
+  list-style:none;
+  display:none;
+  margin-top:10px;
+  background:#161b22;
+  border-radius:12px;
+  padding:10px;
+}
+
+.list ul.show{
+  display:block;
+}
+
+.list li{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid #222;
+}
+
+.list li:last-child{
+  border-bottom:none;
+}

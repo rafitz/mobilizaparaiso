@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Mobiliza Paraíso</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+</head>
+<body>
+
+<section class="screen start active" id="start">
+  <div class="center">
+    <div class="bus-icon">🚌</div>
+    <h1>Mobiliza Paraíso</h1>
+    <button class="enter" onclick="openApp()">→</button>
+  </div>
+</section>
+
+<section class="screen app" id="app">
+
+  <header class="header">
+    <div>🚌 Mobiliza Paraíso</div>
+    <span class="status online">Online</span>
+  </header>
+
+  <div class="bus-status">Ônibus em rota</div>
+
+  <div id="map"></div>
+
+  <div class="info-cards">
+    <div class="card">
+      <p>PRÓXIMO PONTO</p>
+      <h3>UFLA Paraíso</h3>
+    </div>
+
+    <div class="card">
+      <p>TEMPO ESTIMADO</p>
+      <h3 class="green">2 min</h3>
+    </div>
+
+    <div class="card">
+      <p>ÚLTIMA ATUALIZAÇÃO</p>
+      <h3 id="time">--:--</h3>
+    </div>
+
+    <div class="card">
+      <p>VALOR DA TARIFA</p>
+      <h3>R$ 3,45</h3>
+    </div>
+  </div>
+
+  <div class="list">
+    <button class="toggle-btn" onclick="toggleList()">Ver próximos pontos</button>
+
+    <ul id="points">
+      <li><span>UFLA Paraíso</span><span>2 min</span></li>
+      <li><span>Centro</span><span>5 min</span></li>
+      <li><span>Rodoviária</span><span>10 min</span></li>
+    </ul>
+  </div>
+
+</section>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+let map, marker
+
+let route = [
+  [-20.9128, -46.9902],
+  [-20.9122, -46.9895],
+  [-20.9115, -46.9888],
+  [-20.9108, -46.9880],
+  [-20.9102, -46.9873],
+  [-20.9095, -46.9867],
+  [-20.9089, -46.9860],
+  [-20.9083, -46.9854]
+]
+
+let index = 0
+
+function openApp(){
+  document.getElementById('start').classList.remove('active')
+  document.getElementById('app').classList.add('active')
+  setTimeout(initMap,300)
+}
+
+function toggleList(){
+  document.getElementById('points').classList.toggle('show')
+}
+
+function initMap(){
+  map = L.map('map').setView(route[0], 15)
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    maxZoom:19
+  }).addTo(map)
+
+  L.polyline(route, {color: '#22c55e', weight: 5}).addTo(map)
+
+  marker = L.marker(route[0]).addTo(map)
+
+  moveBus()
+}
+
+function moveBus(){
+  setInterval(()=>{
+    index++
+
+    if(index >= route.length){
+      index = 0
+    }
+
+    marker.setLatLng(route[index])
+    map.panTo(route[index], {animate:true, duration:1})
+
+    document.getElementById('time').innerText =
+      new Date().toLocaleTimeString()
+
+  },1500)
+}
+</script>
+
+</body>
+</html>
