@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Mobiliza Paraíso</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 
@@ -13,7 +17,7 @@
 
 <section class="screen start active" id="start">
   <div class="center">
-    <div class="bus-icon">🚌</div>
+    <div class="bus-icon"><img src="bus.svg" alt="ônibus"></div>
     <h1>Mobiliza Paraíso</h1>
     <button class="enter" onclick="openApp()">→</button>
   </div>
@@ -22,8 +26,8 @@
 <section class="screen app" id="app">
 
   <header class="header">
-    <div>🚌 Mobiliza Paraíso</div>
-    <span class="status online">Online</span>
+    <div><img src="bus.svg" alt="ônibus" class="header-icon"> Mobiliza Paraíso</div>
+    <span class="status online"><span class="dot"></span>Online</span>
   </header>
 
   <div class="bus-status">Ônibus em rota</div>
